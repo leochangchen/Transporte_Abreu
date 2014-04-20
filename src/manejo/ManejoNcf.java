@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class ManejoNcf {
 
+    // Linea de Prueba
     //Conectar a base de datos
     private Connection con = BdConection.getBdConection().getConexion();
 
@@ -134,8 +135,7 @@ public class ManejoNcf {
         String prefix = ncf.getPrefijo();
         String tipoNcf = ncf.getTipo_ncf() < 10 ? "0" + ncf.getTipo_ncf() : ncf.getTipo_ncf().toString();
 
-        
-        System.out.println("El codigo es : "+ncf.getCodigo());
+        System.out.println("El codigo es : " + ncf.getCodigo());
         int secuecia = new ManejoNcf().getNcf(ncf.getCodigo()).getActual() + 1;
 
         String sec = String.valueOf(secuecia);
@@ -158,7 +158,7 @@ public class ManejoNcf {
             javax.swing.JOptionPane.showMessageDialog(null, "Error Creacion Statement en total ncf");
         }
     }
-    
+
     public void borrarNcf(int codigo) {
         String squery = "DELETE FROM ncf WHERE codigo=" + codigo;
         try {
