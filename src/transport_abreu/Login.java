@@ -1,7 +1,7 @@
 package transport_abreu;
 
 import clases.BdConection;
-import clases.LoginDatos;
+//import clases.LoginDatos;
 import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.ResultSet;

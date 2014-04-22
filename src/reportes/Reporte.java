@@ -29,7 +29,7 @@ public class Reporte {
 
             reporte = (JasperReport) JRLoader.loadObject(Reporte.class.getResourceAsStream("/reportes/tFactura.jasper"));
             print = JasperFillManager.fillReport(reporte, parameters, BdConection.getBdConection().getConexion());
-            JasperViewer visor = new JasperViewer(print);
+            JasperViewer visor = new JasperViewer(print, false);
             visor.setVisible(true);
 //            visor.setDefaultCloseOperation(visor.DISPOSE_ON_CLOSE);
 
@@ -37,8 +37,8 @@ public class Reporte {
             Logger.getLogger(Reporte.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-     public static void rRFecha(Date fecha , Date fecha2) {
+
+    public static void rRFecha(Date fecha, Date fecha2) {
         try {
             JasperReport reporte;
             JasperPrint print;
@@ -49,7 +49,7 @@ public class Reporte {
 
             reporte = (JasperReport) JRLoader.loadObject(Reporte.class.getResourceAsStream("/reportes/tFactura_1.jasper"));
             print = JasperFillManager.fillReport(reporte, parameters, BdConection.getBdConection().getConexion());
-            JasperViewer visor = new JasperViewer(print,false);
+            JasperViewer visor = new JasperViewer(print, false);
             visor.setVisible(true);
 //            visor.setDefaultCloseOperation(visor.DISPOSE_ON_CLOSE);
 
@@ -57,8 +57,8 @@ public class Reporte {
             Logger.getLogger(Reporte.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     
-     public static void rMonto(Double monto , Double monto2) {
+
+    public static void rMonto(Double monto, Double monto2) {
         try {
             JasperReport reporte;
             JasperPrint print;
@@ -69,7 +69,7 @@ public class Reporte {
 
             reporte = (JasperReport) JRLoader.loadObject(Reporte.class.getResourceAsStream("/reportes/tMonto.jasper"));
             print = JasperFillManager.fillReport(reporte, parameters, BdConection.getBdConection().getConexion());
-            JasperViewer visor = new JasperViewer(print,false);
+            JasperViewer visor = new JasperViewer(print, false);
             visor.setVisible(true);
 //            visor.setDefaultCloseOperation(visor.DISPOSE_ON_CLOSE);
 
@@ -78,14 +78,14 @@ public class Reporte {
         }
     }
 
-     public static void rCliente() {
+    public static void rCliente() {
         try {
             JasperReport reporte;
             JasperPrint print;
- 
+
             reporte = (JasperReport) JRLoader.loadObject(Reporte.class.getResourceAsStream("/reportes/tCliente.jasper"));
             print = JasperFillManager.fillReport(reporte, null, BdConection.getBdConection().getConexion());
-            JasperViewer visor = new JasperViewer(print,false);
+            JasperViewer visor = new JasperViewer(print, false);
 //            visor.setDefaultCloseOperation(visor.HIDE_ON_CLOSE);
             visor.setVisible(true);
 
@@ -93,18 +93,17 @@ public class Reporte {
             Logger.getLogger(Reporte.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     
-     public static void rFactura(int codigo) {
+
+    public static void rFactura(int codigo) {
         try {
             JasperReport reporte;
             JasperPrint print;
             Map parameters = new HashMap<>();
-            System.out.println(codigo);
             parameters.put("CodFac", codigo);
 
             reporte = (JasperReport) JRLoader.loadObject(Reporte.class.getResourceAsStream("/reportes/tFacturaGeneral.jasper"));
             print = JasperFillManager.fillReport(reporte, parameters, BdConection.getBdConection().getConexion());
-            JasperViewer visor = new JasperViewer(print,false);
+            JasperViewer visor = new JasperViewer(print, false);
             visor.setVisible(true);
 //            visor.setDefaultCloseOperation(visor.DISPOSE_ON_CLOSE);
 
@@ -112,7 +111,7 @@ public class Reporte {
             Logger.getLogger(Reporte.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     
+
     public static void main(String[] args) {
     }
 }

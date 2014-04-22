@@ -183,7 +183,7 @@ public class rFactura extends javax.swing.JDialog {
         Double monto2 = Double.parseDouble(jTextHasta.getText());
 
         if (jTextDesde.getText().equals(null) && jTextHasta.getText().equals(null)) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Debes poner por lo menos una monto");
+            javax.swing.JOptionPane.showMessageDialog(null, "Debes poner por lo menos un monto");
         } else {
             if (monto2 == null) {
                 Reporte.rMonto(0.0, monto);
