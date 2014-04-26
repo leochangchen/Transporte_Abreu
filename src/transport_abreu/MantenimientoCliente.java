@@ -69,6 +69,7 @@ public class MantenimientoCliente extends javax.swing.JDialog {
         jBUltima = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Mantenimiento de Cliente");
 
         jLBCliente.setText("Introduzca el RNC para buscar cliente");
 
@@ -86,7 +87,7 @@ public class MantenimientoCliente extends javax.swing.JDialog {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Busqueda de cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, java.awt.Color.black));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Busqueda de cliente"));
 
         jLCTelefono.setText("Telefono");
 
@@ -204,27 +205,29 @@ public class MantenimientoCliente extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(jTCliente);
-        jTCliente.getColumnModel().getColumn(0).setMinWidth(35);
-        jTCliente.getColumnModel().getColumn(0).setPreferredWidth(35);
-        jTCliente.getColumnModel().getColumn(0).setMaxWidth(35);
-        jTCliente.getColumnModel().getColumn(1).setMinWidth(80);
-        jTCliente.getColumnModel().getColumn(1).setPreferredWidth(80);
-        jTCliente.getColumnModel().getColumn(1).setMaxWidth(80);
-        jTCliente.getColumnModel().getColumn(2).setMinWidth(130);
-        jTCliente.getColumnModel().getColumn(2).setPreferredWidth(130);
-        jTCliente.getColumnModel().getColumn(2).setMaxWidth(130);
-        jTCliente.getColumnModel().getColumn(3).setMinWidth(90);
-        jTCliente.getColumnModel().getColumn(3).setPreferredWidth(90);
-        jTCliente.getColumnModel().getColumn(3).setMaxWidth(90);
-        jTCliente.getColumnModel().getColumn(4).setMinWidth(90);
-        jTCliente.getColumnModel().getColumn(4).setPreferredWidth(90);
-        jTCliente.getColumnModel().getColumn(4).setMaxWidth(90);
-        jTCliente.getColumnModel().getColumn(5).setMinWidth(100);
-        jTCliente.getColumnModel().getColumn(5).setPreferredWidth(100);
-        jTCliente.getColumnModel().getColumn(5).setMaxWidth(100);
-        jTCliente.getColumnModel().getColumn(6).setMinWidth(200);
-        jTCliente.getColumnModel().getColumn(6).setPreferredWidth(200);
-        jTCliente.getColumnModel().getColumn(6).setMaxWidth(200);
+        if (jTCliente.getColumnModel().getColumnCount() > 0) {
+            jTCliente.getColumnModel().getColumn(0).setMinWidth(35);
+            jTCliente.getColumnModel().getColumn(0).setPreferredWidth(35);
+            jTCliente.getColumnModel().getColumn(0).setMaxWidth(35);
+            jTCliente.getColumnModel().getColumn(1).setMinWidth(80);
+            jTCliente.getColumnModel().getColumn(1).setPreferredWidth(80);
+            jTCliente.getColumnModel().getColumn(1).setMaxWidth(80);
+            jTCliente.getColumnModel().getColumn(2).setMinWidth(130);
+            jTCliente.getColumnModel().getColumn(2).setPreferredWidth(130);
+            jTCliente.getColumnModel().getColumn(2).setMaxWidth(130);
+            jTCliente.getColumnModel().getColumn(3).setMinWidth(90);
+            jTCliente.getColumnModel().getColumn(3).setPreferredWidth(90);
+            jTCliente.getColumnModel().getColumn(3).setMaxWidth(90);
+            jTCliente.getColumnModel().getColumn(4).setMinWidth(90);
+            jTCliente.getColumnModel().getColumn(4).setPreferredWidth(90);
+            jTCliente.getColumnModel().getColumn(4).setMaxWidth(90);
+            jTCliente.getColumnModel().getColumn(5).setMinWidth(100);
+            jTCliente.getColumnModel().getColumn(5).setPreferredWidth(100);
+            jTCliente.getColumnModel().getColumn(5).setMaxWidth(100);
+            jTCliente.getColumnModel().getColumn(6).setMinWidth(200);
+            jTCliente.getColumnModel().getColumn(6).setPreferredWidth(200);
+            jTCliente.getColumnModel().getColumn(6).setMaxWidth(200);
+        }
 
         jBPrimera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/First.png"))); // NOI18N
         jBPrimera.addActionListener(new java.awt.event.ActionListener() {
@@ -319,31 +322,30 @@ public class MantenimientoCliente extends javax.swing.JDialog {
 
     private void jBSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSiguienteActionPerformed
 
-        
-            if (cliente.getCodigo() < total) {
-                codCli = cliente.getCodigo() + 1;
-                //System.out.println(codCli);
-                cliente = mCliente.getCliente(codCli);
-                buscar(cliente);
-                codCli = cliente.getCodigo();
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "Este es el ultimo cliente en el registro");
-            }
-        
+        if (cliente.getCodigo() < total) {
+            codCli = cliente.getCodigo() + 1;
+            //System.out.println(codCli);
+            cliente = mCliente.getCliente(codCli);
+            buscar(cliente);
+            codCli = cliente.getCodigo();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Este es el ultimo cliente en el registro");
+        }
+
 
     }//GEN-LAST:event_jBSiguienteActionPerformed
 
     private void jBAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnteriorActionPerformed
 
-            if (cliente.getCodigo() > ((total - total) + 1)) {
-                codCli = cliente.getCodigo() - 1;
-                //System.out.println(codCli);
-                cliente = mCliente.getCliente(codCli);
-                buscar(cliente);
-                codCli = cliente.getCodigo();
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "Este es el primer cliente en el registro");
-            }
+        if (cliente.getCodigo() > ((total - total) + 1)) {
+            codCli = cliente.getCodigo() - 1;
+            //System.out.println(codCli);
+            cliente = mCliente.getCliente(codCli);
+            buscar(cliente);
+            codCli = cliente.getCodigo();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Este es el primer cliente en el registro");
+        }
 
     }//GEN-LAST:event_jBAnteriorActionPerformed
 
@@ -363,7 +365,7 @@ public class MantenimientoCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jBSelectActionPerformed
 
     private void jTClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTClienteMouseClicked
-        cliente = mCliente.getCliente((Integer)jTCliente.getValueAt(jTCliente.getSelectedRow(), 0));
+        cliente = mCliente.getCliente((Integer) jTCliente.getValueAt(jTCliente.getSelectedRow(), 0));
         System.out.println(cliente);
         buscar(cliente);
     }//GEN-LAST:event_jTClienteMouseClicked

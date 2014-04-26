@@ -6,6 +6,7 @@ import entidades.Factura;
 import entidades.Ncf;
 import entidades.Ubicacion;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -116,7 +117,7 @@ public class FacturaBeta extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBackground(java.awt.Color.white);
+        setTitle("Facturacion");
         setForeground(java.awt.Color.white);
 
         jToolBar1.setRollover(true);
@@ -176,7 +177,7 @@ public class FacturaBeta extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCNombre)
                     .addComponent(jTextCNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -229,7 +230,7 @@ public class FacturaBeta extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLFTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                    .addComponent(jLFTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, Short.MAX_VALUE)
                     .addComponent(jLFNumero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLFFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLFSemana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -262,7 +263,7 @@ public class FacturaBeta extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLFSemana)
                     .addComponent(jTextFSemana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLFactura.setFont(new java.awt.Font("新細明體", 0, 27)); // NOI18N
@@ -282,12 +283,32 @@ public class FacturaBeta extends javax.swing.JDialog {
         jScrollPane2.setViewportView(tbDetalleFactura);
 
         jTNumContenedor.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTNumContenedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTNumContenedorKeyTyped(evt);
+            }
+        });
 
         jTNumConduce.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTNumConduce.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTNumConduceKeyTyped(evt);
+            }
+        });
 
         jTTipoCarga.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTTipoCarga.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTTipoCargaKeyTyped(evt);
+            }
+        });
 
         jTValor.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTValor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTValorKeyTyped(evt);
+            }
+        });
 
         jTAgregar.setText("+");
         jTAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -351,7 +372,7 @@ public class FacturaBeta extends javax.swing.JDialog {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTQuitar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBGuardar1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
+                    .addComponent(jBGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -522,11 +543,11 @@ public class FacturaBeta extends javax.swing.JDialog {
     private void jCBFTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBFTipoItemStateChanged
         if ((jCBFTipo.getSelectedItem()) != null) {
             dLNcf.setText(ManejoNcf.getNCFSiguiente((Ncf) jCBFTipo.getSelectedItem()));
-           
+
         } else {
             dLNcf.setText("");
         }
-        
+
     }//GEN-LAST:event_jCBFTipoItemStateChanged
 
     private void jBGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardar1ActionPerformed
@@ -560,8 +581,52 @@ public class FacturaBeta extends javax.swing.JDialog {
     }//GEN-LAST:event_jTCBDestinoItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Reporte.rFactura(Integer.parseInt(jTextFNumero.getText()));
+        Reporte.rFactura(Integer.parseInt(jTextFNumero.getText()));
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTValorKeyTyped
+        if (!Character.isDigit(evt.getKeyChar()) && !Character.isISOControl(evt.getKeyChar())) {
+            Toolkit.getDefaultToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTValorKeyTyped
+
+    private void jTTipoCargaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTTipoCargaKeyTyped
+        if (!Character.isDigit(evt.getKeyChar()) && !Character.isISOControl(evt.getKeyChar()) && !Character.isAlphabetic(evt.getKeyChar())) {
+            Toolkit.getDefaultToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTTipoCargaKeyTyped
+
+    private void jTNumConduceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNumConduceKeyTyped
+        if (!Character.isDigit(evt.getKeyChar()) && !Character.isISOControl(evt.getKeyChar()) && !Character.isAlphabetic(evt.getKeyChar())) {
+            Toolkit.getDefaultToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTNumConduceKeyTyped
+
+    private void jTNumContenedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNumContenedorKeyTyped
+        if (jTNumContenedor.getText().length() < 13) {
+
+            if (jTNumContenedor.getText().length() == 4 || jTNumContenedor.getText().length() == 11) {
+                jTNumContenedor.setText(jTNumContenedor.getText() + "-");
+            }
+            if (!Character.isDigit(evt.getKeyChar()) && !Character.isISOControl(evt.getKeyChar()) && !Character.isAlphabetic(evt.getKeyChar())) {
+                Toolkit.getDefaultToolkit().beep();
+                evt.consume();
+            } else {
+                if (Character.isLowerCase(evt.getKeyChar())) {
+                    jTNumContenedor.setText(jTNumContenedor.getText() + Character.toUpperCase(evt.getKeyChar()));
+                    evt.consume();
+                }
+            }
+
+        } else {
+            Toolkit.getDefaultToolkit().beep();
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_jTNumContenedorKeyTyped
 
     /**
      * @param args the command line arguments

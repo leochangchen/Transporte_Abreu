@@ -1,7 +1,6 @@
 package manejo;
 
 import clases.BdConection;
-import entidades.Ubicacion;
 import entidades.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,6 +28,7 @@ public class ManejoUsuario {
             rs = con.createStatement().executeQuery(squery);
 
             if (rs.next()) {
+                usuario.setCodigo(rs.getInt("codigo"));
                 usuario.setUsuario(rs.getString("usuario"));
                 usuario.setPassword(rs.getString("password"));
             } else {
@@ -42,10 +42,10 @@ public class ManejoUsuario {
 
         return usuario;
     }
-    
+
     public Usuario getSUsuario(String getusuario) {
         Usuario usuario = new Usuario();
-        String squery = "SELECT * FROM usuario WHERE usuario ='" + getusuario+"'";
+        String squery = "SELECT * FROM usuario WHERE usuario ='" + getusuario + "'";
         try {
             ResultSet rs;
             rs = con.createStatement().executeQuery(squery);
@@ -108,7 +108,7 @@ public class ManejoUsuario {
 
             pst.setString(1, usuario.getUsuario());
             pst.setString(2, usuario.getPassword());
-            
+
             guardado = pst.execute();
 
         } catch (SQLException ex) {
@@ -135,7 +135,7 @@ public class ManejoUsuario {
         }
         return total;
     }
-    
+
 //    public int getCod_Ubicacion(Ubicacion ubicacion) {
 //        int codigo = ubicacion.getCodigo();
 //        return codigo;
@@ -164,7 +164,6 @@ public class ManejoUsuario {
 //
 //        return ubicacion;
 //    }
-    
     public void borrarUsuario(int codigo) {
         String squery = "DELETE FROM usuario WHERE codigo=" + codigo;
         try {

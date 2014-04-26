@@ -77,14 +77,14 @@
 	<columnHeader>
 		<band height="39" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="31114b4b-7ec0-4add-8032-06ff3375aed4" x="206" y="1" width="43" height="35"/>
+				<reportElement uuid="31114b4b-7ec0-4add-8032-06ff3375aed4" x="246" y="1" width="43" height="35"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Codigo cliente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="8d9a2c66-9798-4ae0-9e6f-331324ad8ef3" x="269" y="16" width="138" height="20"/>
+				<reportElement uuid="8d9a2c66-9798-4ae0-9e6f-331324ad8ef3" x="309" y="16" width="138" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -105,7 +105,7 @@
 				<text><![CDATA[Monto]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="31114b4b-7ec0-4add-8032-06ff3375aed4" x="123" y="16" width="73" height="20"/>
+				<reportElement uuid="31114b4b-7ec0-4add-8032-06ff3375aed4" x="123" y="16" width="113" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -126,12 +126,12 @@
 	<detail>
 		<band height="21" splitType="Stretch">
 			<textField>
-				<reportElement uuid="61a7d895-1821-46a9-9be1-69836fe8d687" x="206" y="1" width="43" height="20"/>
+				<reportElement uuid="61a7d895-1821-46a9-9be1-69836fe8d687" x="246" y="1" width="43" height="20"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="e723b85f-2aff-468d-96e2-fd2a4c7ffd74" x="269" y="1" width="138" height="20"/>
+				<reportElement uuid="e723b85f-2aff-468d-96e2-fd2a4c7ffd74" x="309" y="1" width="138" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
@@ -146,7 +146,7 @@
 				<textFieldExpression><![CDATA[$F{monto}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="26cd717f-2506-4e20-a67d-1138352707e7" x="123" y="1" width="73" height="20"/>
+				<reportElement uuid="26cd717f-2506-4e20-a67d-1138352707e7" x="123" y="1" width="113" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{ncf}]]></textFieldExpression>
 			</textField>

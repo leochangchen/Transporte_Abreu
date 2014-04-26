@@ -77,7 +77,7 @@
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="dd84af18-4a72-49ec-8c25-89deea208c48" x="45" y="16" width="45" height="20"/>
+				<reportElement uuid="dd84af18-4a72-49ec-8c25-89deea208c48" x="12" y="16" width="45" height="20"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -91,7 +91,7 @@
 				<text><![CDATA[Monto]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="31114b4b-7ec0-4add-8032-06ff3375aed4" x="101" y="16" width="73" height="20"/>
+				<reportElement uuid="31114b4b-7ec0-4add-8032-06ff3375aed4" x="60" y="16" width="120" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -115,7 +115,7 @@
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="0230d8cc-de86-48ff-90c0-e2d8cb49fd19" x="45" y="1" width="45" height="20"/>
+				<reportElement uuid="0230d8cc-de86-48ff-90c0-e2d8cb49fd19" x="12" y="1" width="45" height="20"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
 			</textField>
@@ -125,7 +125,7 @@
 				<textFieldExpression><![CDATA[$F{monto}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="26cd717f-2506-4e20-a67d-1138352707e7" x="101" y="1" width="73" height="20"/>
+				<reportElement uuid="26cd717f-2506-4e20-a67d-1138352707e7" x="60" y="1" width="120" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{ncf}]]></textFieldExpression>
 			</textField>

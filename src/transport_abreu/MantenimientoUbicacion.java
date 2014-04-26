@@ -49,6 +49,7 @@ public class MantenimientoUbicacion extends javax.swing.JDialog {
         jTextDescripcion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Control de Ubicaciones");
 
         jLBCliente.setText("Introduzca el codigo para buscar ubicacion");
 
@@ -108,12 +109,14 @@ public class MantenimientoUbicacion extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(jTUbicacion);
-        jTUbicacion.getColumnModel().getColumn(0).setMinWidth(50);
-        jTUbicacion.getColumnModel().getColumn(0).setPreferredWidth(50);
-        jTUbicacion.getColumnModel().getColumn(0).setMaxWidth(50);
-        jTUbicacion.getColumnModel().getColumn(1).setMinWidth(150);
-        jTUbicacion.getColumnModel().getColumn(1).setPreferredWidth(150);
-        jTUbicacion.getColumnModel().getColumn(1).setMaxWidth(150);
+        if (jTUbicacion.getColumnModel().getColumnCount() > 0) {
+            jTUbicacion.getColumnModel().getColumn(0).setMinWidth(50);
+            jTUbicacion.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jTUbicacion.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTUbicacion.getColumnModel().getColumn(1).setMinWidth(150);
+            jTUbicacion.getColumnModel().getColumn(1).setPreferredWidth(150);
+            jTUbicacion.getColumnModel().getColumn(1).setMaxWidth(150);
+        }
 
         jBPrimera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/First.png"))); // NOI18N
         jBPrimera.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +132,7 @@ public class MantenimientoUbicacion extends javax.swing.JDialog {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Busqueda de ubicacion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, java.awt.Color.black));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Busqueda de ubicacion"));
 
         jLCodigo.setText("Codigo");
 
@@ -228,7 +231,7 @@ public class MantenimientoUbicacion extends javax.swing.JDialog {
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
 
-       if (jTextBCodigo.getText().equals("")) {
+        if (jTextBCodigo.getText().equals("")) {
             javax.swing.JOptionPane.showMessageDialog(null, "Introduzca el codigo de la ubicacion para poder buscar");
         } else {
 
@@ -243,31 +246,30 @@ public class MantenimientoUbicacion extends javax.swing.JDialog {
 
     private void jBSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSiguienteActionPerformed
 
-        
-            if (ubicacion.getCodigo() < total) {
-                codUbi = ubicacion.getCodigo() + 1;
-                //System.out.println(codCli);
-                ubicacion = mUbicacion.getUbicacion(codUbi);
-                buscar(ubicacion);
-                codUbi = ubicacion.getCodigo();
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "Este es la ultima ubicacion en el registro");
-            }
-        
+        if (ubicacion.getCodigo() < total) {
+            codUbi = ubicacion.getCodigo() + 1;
+            //System.out.println(codCli);
+            ubicacion = mUbicacion.getUbicacion(codUbi);
+            buscar(ubicacion);
+            codUbi = ubicacion.getCodigo();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Este es la ultima ubicacion en el registro");
+        }
+
 
     }//GEN-LAST:event_jBSiguienteActionPerformed
 
     private void jBAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnteriorActionPerformed
 
-            if (ubicacion.getCodigo() > ((total - total) + 1)) {
-                codUbi = ubicacion.getCodigo() - 1;
-                //System.out.println(codCli);
-                ubicacion = mUbicacion.getUbicacion(codUbi);
-                buscar(ubicacion);
-                codUbi = ubicacion.getCodigo();
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "Este es la primera ubicacion en el registro");
-            }
+        if (ubicacion.getCodigo() > ((total - total) + 1)) {
+            codUbi = ubicacion.getCodigo() - 1;
+            //System.out.println(codCli);
+            ubicacion = mUbicacion.getUbicacion(codUbi);
+            buscar(ubicacion);
+            codUbi = ubicacion.getCodigo();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Este es la primera ubicacion en el registro");
+        }
 
     }//GEN-LAST:event_jBAnteriorActionPerformed
 
@@ -280,7 +282,7 @@ public class MantenimientoUbicacion extends javax.swing.JDialog {
     }//GEN-LAST:event_jBBorrarActionPerformed
 
     private void jTUbicacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTUbicacionMouseClicked
-        ubicacion = mUbicacion.getUbicacion((Integer)jTUbicacion.getValueAt(jTUbicacion.getSelectedRow(), 0));
+        ubicacion = mUbicacion.getUbicacion((Integer) jTUbicacion.getValueAt(jTUbicacion.getSelectedRow(), 0));
         buscar(ubicacion);
     }//GEN-LAST:event_jTUbicacionMouseClicked
 

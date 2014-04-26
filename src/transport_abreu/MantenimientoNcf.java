@@ -49,6 +49,7 @@ public class MantenimientoNcf extends javax.swing.JDialog {
         jTextDescripcion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Control de NCF");
 
         jLBCliente.setText("Introduzca el codigo para buscar ncf");
 
@@ -108,12 +109,14 @@ public class MantenimientoNcf extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(jTNcf);
-        jTNcf.getColumnModel().getColumn(0).setMinWidth(50);
-        jTNcf.getColumnModel().getColumn(0).setPreferredWidth(50);
-        jTNcf.getColumnModel().getColumn(0).setMaxWidth(50);
-        jTNcf.getColumnModel().getColumn(1).setMinWidth(300);
-        jTNcf.getColumnModel().getColumn(1).setPreferredWidth(300);
-        jTNcf.getColumnModel().getColumn(1).setMaxWidth(300);
+        if (jTNcf.getColumnModel().getColumnCount() > 0) {
+            jTNcf.getColumnModel().getColumn(0).setMinWidth(50);
+            jTNcf.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jTNcf.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTNcf.getColumnModel().getColumn(1).setMinWidth(300);
+            jTNcf.getColumnModel().getColumn(1).setPreferredWidth(300);
+            jTNcf.getColumnModel().getColumn(1).setMaxWidth(300);
+        }
 
         jBPrimera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/First.png"))); // NOI18N
         jBPrimera.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +132,7 @@ public class MantenimientoNcf extends javax.swing.JDialog {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Busqueda de ubicacion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, java.awt.Color.black));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Busqueda de ubicacion"));
 
         jLCodigo.setText("Codigo");
 
@@ -223,12 +226,14 @@ public class MantenimientoNcf extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        jPanel1.getAccessibleContext().setAccessibleName("Busqueda de NCF");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
 
-       if (jTextBCodigo.getText().equals("")) {
+        if (jTextBCodigo.getText().equals("")) {
             javax.swing.JOptionPane.showMessageDialog(null, "Introduzca el codigo de la ncf para poder buscar");
         } else {
 
@@ -243,31 +248,30 @@ public class MantenimientoNcf extends javax.swing.JDialog {
 
     private void jBSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSiguienteActionPerformed
 
-        
-            if (ncf.getCodigo() < total) {
-                codNcf = ncf.getCodigo() + 1;
-                //System.out.println(codCli);
-                ncf = mNcf.getNcf(codNcf);
-                buscar(ncf);
-                codNcf = ncf.getCodigo();
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "Este es la ultima ncf en el registro");
-            }
-        
+        if (ncf.getCodigo() < total) {
+            codNcf = ncf.getCodigo() + 1;
+            //System.out.println(codCli);
+            ncf = mNcf.getNcf(codNcf);
+            buscar(ncf);
+            codNcf = ncf.getCodigo();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Este es la ultima ncf en el registro");
+        }
+
 
     }//GEN-LAST:event_jBSiguienteActionPerformed
 
     private void jBAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnteriorActionPerformed
 
-            if (ncf.getCodigo() > ((total - total) + 1)) {
-                codNcf = ncf.getCodigo() - 1;
-                //System.out.println(codCli);
-                ncf = mNcf.getNcf(codNcf);
-                buscar(ncf);
-                codNcf = ncf.getCodigo();
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "Este es la primera ncf en el registro");
-            }
+        if (ncf.getCodigo() > ((total - total) + 1)) {
+            codNcf = ncf.getCodigo() - 1;
+            //System.out.println(codCli);
+            ncf = mNcf.getNcf(codNcf);
+            buscar(ncf);
+            codNcf = ncf.getCodigo();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Este es la primera ncf en el registro");
+        }
 
     }//GEN-LAST:event_jBAnteriorActionPerformed
 
@@ -280,7 +284,7 @@ public class MantenimientoNcf extends javax.swing.JDialog {
     }//GEN-LAST:event_jBBorrarActionPerformed
 
     private void jTNcfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTNcfMouseClicked
-        ncf = mNcf.getNcf((Integer)jTNcf.getValueAt(jTNcf.getSelectedRow(), 0));
+        ncf = mNcf.getNcf((Integer) jTNcf.getValueAt(jTNcf.getSelectedRow(), 0));
         buscar(ncf);
     }//GEN-LAST:event_jTNcfMouseClicked
 

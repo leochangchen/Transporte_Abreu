@@ -112,7 +112,7 @@ public class ManejoTipoCarga {
         }
         return total;
     }
-    
+
     public void borrarCarga(int codigo) {
         String squery = "DELETE FROM tipo_carga WHERE codigo=" + codigo;
         try {

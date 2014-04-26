@@ -111,12 +111,12 @@ public class ManejoUbicacion {
         }
         return total;
     }
-    
+
     public int getCod_Ubicacion(Ubicacion ubicacion) {
         int codigo = ubicacion.getCodigo();
         return codigo;
     }
-    
+
     public Ubicacion getSUbicacion(String codigo) {
         Ubicacion ubicacion = new Ubicacion();
         String squery = "SELECT * FROM ubicacion WHERE codigo =" + codigo;
@@ -140,7 +140,7 @@ public class ManejoUbicacion {
 
         return ubicacion;
     }
-    
+
     public void borrarUbicacion(int codigo) {
         String squery = "DELETE FROM ubicacion WHERE codigo=" + codigo;
         try {

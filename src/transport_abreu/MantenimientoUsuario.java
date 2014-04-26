@@ -49,6 +49,7 @@ public class MantenimientoUsuario extends javax.swing.JDialog {
         jTextUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Control de Usuarios");
 
         jLBCliente.setText("Introduzca el usuario para buscar ubicacion");
 
@@ -108,12 +109,14 @@ public class MantenimientoUsuario extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(jTUsuario);
-        jTUsuario.getColumnModel().getColumn(0).setMinWidth(170);
-        jTUsuario.getColumnModel().getColumn(0).setPreferredWidth(170);
-        jTUsuario.getColumnModel().getColumn(0).setMaxWidth(170);
-        jTUsuario.getColumnModel().getColumn(1).setMinWidth(170);
-        jTUsuario.getColumnModel().getColumn(1).setPreferredWidth(170);
-        jTUsuario.getColumnModel().getColumn(1).setMaxWidth(170);
+        if (jTUsuario.getColumnModel().getColumnCount() > 0) {
+            jTUsuario.getColumnModel().getColumn(0).setMinWidth(170);
+            jTUsuario.getColumnModel().getColumn(0).setPreferredWidth(170);
+            jTUsuario.getColumnModel().getColumn(0).setMaxWidth(170);
+            jTUsuario.getColumnModel().getColumn(1).setMinWidth(170);
+            jTUsuario.getColumnModel().getColumn(1).setPreferredWidth(170);
+            jTUsuario.getColumnModel().getColumn(1).setMaxWidth(170);
+        }
 
         jBPrimera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/First.png"))); // NOI18N
         jBPrimera.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +132,7 @@ public class MantenimientoUsuario extends javax.swing.JDialog {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Busqueda de ubicacion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, java.awt.Color.black));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Busqueda de ubicacion"));
 
         jLPassword.setText("Password");
 
@@ -223,16 +226,18 @@ public class MantenimientoUsuario extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        jPanel1.getAccessibleContext().setAccessibleName("Busqueda de usuario");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
 
-       if (jTextBUsuario.getText().equals("")) {
+        if (jTextBUsuario.getText().equals("")) {
             javax.swing.JOptionPane.showMessageDialog(null, "Introduzca el usuario para poder buscar");
         } else {
 
-            usuario = mUsuario.getUsuario(Integer.parseInt(jTextBUsuario.getText()));
+            usuario = mUsuario.getSUsuario(jTextBUsuario.getText());
             buscar(usuario);
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
@@ -243,31 +248,26 @@ public class MantenimientoUsuario extends javax.swing.JDialog {
 
     private void jBSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSiguienteActionPerformed
 
-        
-            if (usuario.getCodigo() < total) {
-                codUsu = usuario.getCodigo() + 1;
-                //System.out.println(codCli);
-                usuario = mUsuario.getUsuario(codUsu);
-                buscar(usuario);
-                codUsu = usuario.getCodigo();
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "Este es el ultimo usuario en el registro");
-            }
-        
+        if (usuario.getCodigo() < total) {
+            codUsu = usuario.getCodigo() + 1;
+            usuario = mUsuario.getUsuario(codUsu);
+            buscar(usuario);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Este es el ultimo usuario en el registro");
+        }
+
 
     }//GEN-LAST:event_jBSiguienteActionPerformed
 
     private void jBAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnteriorActionPerformed
 
-            if (usuario.getCodigo() > ((total - total) + 1)) {
-                codUsu = usuario.getCodigo() - 1;
-                //System.out.println(codCli);
-                usuario = mUsuario.getUsuario(codUsu);
-                buscar(usuario);
-                codUsu = usuario.getCodigo();
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "Este es el primer usuario en el registro");
-            }
+        if (usuario.getCodigo() > ((total - total) + 1)) {
+            codUsu = usuario.getCodigo() - 1;
+            usuario = mUsuario.getUsuario(codUsu);
+            buscar(usuario);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Este es el primer usuario en el registro");
+        }
 
     }//GEN-LAST:event_jBAnteriorActionPerformed
 
@@ -280,20 +280,18 @@ public class MantenimientoUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_jBBorrarActionPerformed
 
     private void jTUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTUsuarioMouseClicked
-        usuario = mUsuario.getSUsuario((String)jTUsuario.getValueAt(jTUsuario.getSelectedRow(), 0));
+        usuario = mUsuario.getSUsuario((String) jTUsuario.getValueAt(jTUsuario.getSelectedRow(), 0));
         buscar(usuario);
     }//GEN-LAST:event_jTUsuarioMouseClicked
 
     private void jBUltimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBUltimaActionPerformed
         usuario = mUsuario.getUsuario(mUsuario.getTotal());
         buscar(usuario);
-        codUsu = usuario.getCodigo();
     }//GEN-LAST:event_jBUltimaActionPerformed
 
     private void jBPrimeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPrimeraActionPerformed
         usuario = mUsuario.getUsuario(1);
         buscar(usuario);
-        codUsu = usuario.getCodigo();
     }//GEN-LAST:event_jBPrimeraActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
@@ -376,6 +374,7 @@ public class MantenimientoUsuario extends javax.swing.JDialog {
         jTextBUsuario.setText(usuario.getUsuario());
         jTextPassword.setText(usuario.getPassword());
         jTextUsuario.setText(usuario.getUsuario());
+        codUsu = usuario.getCodigo();
     }
 
     private void nuevo() {

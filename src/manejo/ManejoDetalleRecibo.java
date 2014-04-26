@@ -33,7 +33,7 @@ public class ManejoDetalleRecibo {
                 dRecibo.setCod_recibo(rs.getInt("cod_recibo"));
                 dRecibo.setCod_factura(rs.getInt("cod_factura"));
                 dRecibo.setMonto(rs.getDouble("monto"));
-                
+
             }
 
         } catch (SQLException ex) {
@@ -105,7 +105,7 @@ public class ManejoDetalleRecibo {
         ManejoDetalleRecibo mDRecibo = new ManejoDetalleRecibo();
 
         DetalleRecibo test = new DetalleRecibo();
-        
+
         test.setCod_recibo(1);
         test.setCod_factura(2);
         test.setMonto(3.3);
@@ -122,7 +122,6 @@ public class ManejoDetalleRecibo {
             System.out.println(detalleFactura.getMonto());
             System.out.println("===================");
         }
-
 
     }
 }

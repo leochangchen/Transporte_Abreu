@@ -123,6 +123,5 @@ public class ManejoRecibo {
             System.out.println("===================");
         }
 
-
     }
 }

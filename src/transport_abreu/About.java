@@ -1,14 +1,14 @@
 package transport_abreu;
 
 /**
- *@author Leo-PC:U83U06
- *Transporte_Abreu
- *Hecho por : Enriquillo, Erick Abreu, Chang I-hua
- *Fecha : 2013-Primer semestre
+ * @author Leo-PC:U83U06 Transporte_Abreu Hecho por : Enriquillo, Erick Abreu,
+ * Chang I-hua Fecha : 2013-Primer semestre
  */
 public class About extends javax.swing.JDialog {
 
-    /** Creates new form About */
+    /**
+     * Creates new form About
+     */
     public About(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -22,10 +22,11 @@ public class About extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("About");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/About(1).png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 340));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/About-2.0.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

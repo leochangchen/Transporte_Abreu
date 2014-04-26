@@ -72,6 +72,7 @@ public class MantenimientoFactura extends javax.swing.JDialog {
         jBUltima = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consulta de Factura");
 
         jLBCliente.setText("Introduzca el codigo para buscar factura");
 
@@ -89,7 +90,7 @@ public class MantenimientoFactura extends javax.swing.JDialog {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Busqueda de cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, java.awt.Color.black));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Busqueda de cliente"));
 
         jTextFSubtotal.setEditable(false);
 
@@ -153,7 +154,7 @@ public class MantenimientoFactura extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLFCliente)
                     .addComponent(jTextFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLFNcf)
                     .addComponent(jTextFNcf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -230,27 +231,29 @@ public class MantenimientoFactura extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(jTFactura);
-        jTFactura.getColumnModel().getColumn(0).setMinWidth(35);
-        jTFactura.getColumnModel().getColumn(0).setPreferredWidth(35);
-        jTFactura.getColumnModel().getColumn(0).setMaxWidth(35);
-        jTFactura.getColumnModel().getColumn(1).setMinWidth(80);
-        jTFactura.getColumnModel().getColumn(1).setPreferredWidth(80);
-        jTFactura.getColumnModel().getColumn(1).setMaxWidth(80);
-        jTFactura.getColumnModel().getColumn(2).setMinWidth(130);
-        jTFactura.getColumnModel().getColumn(2).setPreferredWidth(130);
-        jTFactura.getColumnModel().getColumn(2).setMaxWidth(130);
-        jTFactura.getColumnModel().getColumn(3).setMinWidth(90);
-        jTFactura.getColumnModel().getColumn(3).setPreferredWidth(90);
-        jTFactura.getColumnModel().getColumn(3).setMaxWidth(90);
-        jTFactura.getColumnModel().getColumn(4).setMinWidth(90);
-        jTFactura.getColumnModel().getColumn(4).setPreferredWidth(90);
-        jTFactura.getColumnModel().getColumn(4).setMaxWidth(90);
-        jTFactura.getColumnModel().getColumn(5).setMinWidth(100);
-        jTFactura.getColumnModel().getColumn(5).setPreferredWidth(100);
-        jTFactura.getColumnModel().getColumn(5).setMaxWidth(100);
-        jTFactura.getColumnModel().getColumn(6).setMinWidth(200);
-        jTFactura.getColumnModel().getColumn(6).setPreferredWidth(200);
-        jTFactura.getColumnModel().getColumn(6).setMaxWidth(200);
+        if (jTFactura.getColumnModel().getColumnCount() > 0) {
+            jTFactura.getColumnModel().getColumn(0).setMinWidth(35);
+            jTFactura.getColumnModel().getColumn(0).setPreferredWidth(35);
+            jTFactura.getColumnModel().getColumn(0).setMaxWidth(35);
+            jTFactura.getColumnModel().getColumn(1).setMinWidth(80);
+            jTFactura.getColumnModel().getColumn(1).setPreferredWidth(80);
+            jTFactura.getColumnModel().getColumn(1).setMaxWidth(80);
+            jTFactura.getColumnModel().getColumn(2).setMinWidth(130);
+            jTFactura.getColumnModel().getColumn(2).setPreferredWidth(130);
+            jTFactura.getColumnModel().getColumn(2).setMaxWidth(130);
+            jTFactura.getColumnModel().getColumn(3).setMinWidth(90);
+            jTFactura.getColumnModel().getColumn(3).setPreferredWidth(90);
+            jTFactura.getColumnModel().getColumn(3).setMaxWidth(90);
+            jTFactura.getColumnModel().getColumn(4).setMinWidth(90);
+            jTFactura.getColumnModel().getColumn(4).setPreferredWidth(90);
+            jTFactura.getColumnModel().getColumn(4).setMaxWidth(90);
+            jTFactura.getColumnModel().getColumn(5).setMinWidth(100);
+            jTFactura.getColumnModel().getColumn(5).setPreferredWidth(100);
+            jTFactura.getColumnModel().getColumn(5).setMaxWidth(100);
+            jTFactura.getColumnModel().getColumn(6).setMinWidth(200);
+            jTFactura.getColumnModel().getColumn(6).setPreferredWidth(200);
+            jTFactura.getColumnModel().getColumn(6).setMaxWidth(200);
+        }
 
         jBPrimera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/First.png"))); // NOI18N
         jBPrimera.addActionListener(new java.awt.event.ActionListener() {
@@ -346,29 +349,29 @@ public class MantenimientoFactura extends javax.swing.JDialog {
 
     private void jBSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSiguienteActionPerformed
 
-            if (factura.getCodigo() < total) {
-                codFac = factura.getCodigo() + 1;
-                //System.out.println(codCli);
-                factura = mFactura.getFactura(codFac);
-                buscar(factura);
-                codFac = factura.getCodigo();
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "Este es el ultimo cliente en el registro");
-            }
+        if (factura.getCodigo() < total) {
+            codFac = factura.getCodigo() + 1;
+            //System.out.println(codCli);
+            factura = mFactura.getFactura(codFac);
+            buscar(factura);
+            codFac = factura.getCodigo();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Este es el ultimo cliente en el registro");
+        }
 
     }//GEN-LAST:event_jBSiguienteActionPerformed
 
     private void jBAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnteriorActionPerformed
 
-            if (factura.getCodigo() > ((total - total) + 1)) {
-                codFac = factura.getCodigo() - 1;
-                //System.out.println(codCli);
-                factura = mFactura.getFactura(codFac);
-                buscar(factura);
-                codFac = factura.getCodigo();
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "Este es el primer cliente en el registro");
-            }
+        if (factura.getCodigo() > ((total - total) + 1)) {
+            codFac = factura.getCodigo() - 1;
+            //System.out.println(codCli);
+            factura = mFactura.getFactura(codFac);
+            buscar(factura);
+            codFac = factura.getCodigo();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Este es el primer cliente en el registro");
+        }
     }//GEN-LAST:event_jBAnteriorActionPerformed
 
     private void jBBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBorrarActionPerformed
@@ -387,7 +390,7 @@ public class MantenimientoFactura extends javax.swing.JDialog {
     }//GEN-LAST:event_jBSelectActionPerformed
 
     private void jTFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFacturaMouseClicked
-        factura = mFactura.getFactura((Integer)jTFactura.getValueAt(jTFactura.getSelectedRow(), 0));
+        factura = mFactura.getFactura((Integer) jTFactura.getValueAt(jTFactura.getSelectedRow(), 0));
         buscar(factura);
     }//GEN-LAST:event_jTFacturaMouseClicked
 

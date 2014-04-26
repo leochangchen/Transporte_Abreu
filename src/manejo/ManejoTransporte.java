@@ -118,7 +118,7 @@ public class ManejoTransporte {
         }
         return total;
     }
-    
+
 //    Prueba
 //    public static void main(String[] args) {
 //        ManejoTransporte mTransporte = new ManejoTransporte();

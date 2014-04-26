@@ -39,6 +39,7 @@ public class rFactura extends javax.swing.JDialog {
         jTextHasta = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Reporte de Factura");
 
         jLReporte.setFont(new java.awt.Font("新細明體", 0, 27)); // NOI18N
         jLReporte.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

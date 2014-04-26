@@ -17,7 +17,8 @@ import manejo.ManejoUbicacion;
  * Chang I-hua Fecha : 2013-Primer semestre
  */
 public class ManejoDetalleFactura {
-ManejoUbicacion mUbicacion = new ManejoUbicacion();
+
+    ManejoUbicacion mUbicacion = new ManejoUbicacion();
     //Conectar a base de datos
     private Connection con = BdConection.getBdConection().getConexion();
 
@@ -121,7 +122,7 @@ ManejoUbicacion mUbicacion = new ManejoUbicacion();
 
         return listaDetalleFactura;
     }
-    
+
     //Guardar detalles de una factura
     public boolean guardarDetalleFactura(DetalleFactura dFactura) {
 
@@ -154,7 +155,7 @@ ManejoUbicacion mUbicacion = new ManejoUbicacion();
 
         return guardado;
     }
-    
+
     public int getTotal() {
         String squery = "SELECT count(codigo) as codigo FROM detalle_factura";
         int total = 0;
@@ -171,7 +172,7 @@ ManejoUbicacion mUbicacion = new ManejoUbicacion();
         }
         return total;
     }
-    
+
     public void borrarDFactura(int codigo) {
         String squery = "DELETE FROM factura WHERE codigo=" + codigo;
         try {
